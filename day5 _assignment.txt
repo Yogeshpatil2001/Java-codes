@@ -1,0 +1,432 @@
+1)constructor invocation
+
+
+class base
+{
+	base()
+	{
+		super();
+	System.out.println("in base class default constructor");	
+	}
+	base(int k)
+	{
+		System.out.println("inside base class param constr"+k);
+	}
+	
+}
+class sub1 extends base
+{
+	sub1()
+	{
+		super();
+		System.out.println("in sub1 class default constructor");
+	}
+	sub1(int a)
+	{
+		super (4);
+		System.out.println("inside sub1 param constr "+a);
+	}
+}
+class sub2 extends sub1
+{
+	sub2()
+	{
+		super(10);
+		System.out.println("in sub2 class def-const");
+	}
+	sub2(int a)
+	{
+		super(100);
+		System.out.println("inside sub2 param"+ a);
+	}
+}
+
+public class demo {
+
+	public static void main(String[] args) {
+		sub2 sub2 = new sub2(1000);
+
+	}
+
+}
+
+2)
+
+
+class vehicle
+{
+	public void start() //Overridden method
+	{
+		System.out.println("VEHICLE ALLOTED");
+	}
+}
+class fourwheeler extends vehicle
+{
+	public void start() //Protected //default will not work here 
+	{
+		System.out.println("FOURWHEELER STARTED");
+	}
+}
+
+public class demo {
+
+	public static void main(String[] args) {
+		
+         fourwheeler f1 = new fourwheeler();
+         f1.start();
+        
+	}
+ 
+}
+3)
+
+
+class base
+{
+	base()
+	{
+		System.out.println("Inside Base default");
+	}
+}
+class sub1 extends base
+{
+	sub1()
+	{
+		System.out.println("Inside Sub1 default \n");
+	}
+}
+
+class sub2 extends base
+{
+	sub2()
+	{
+		System.out.println("Inside Sub2 default \n");
+	}
+}
+class sub3 extends base  //Child class inherited from Base
+{
+	sub3()
+	{
+		System.out.println("Inside Sub3 default \n");
+	}
+}
+public class demo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       sub3 s3 = new sub3();
+       sub2 s2 = new sub2();
+       sub1 s1 = new sub1();
+    		  
+	}
+
+}
+
+
+4)
+
+
+class top1
+{
+	void disp()
+	{
+		
+	}
+}
+class b1 extends top1
+{
+	void disp()
+	{
+		System.out.println("overridden in b1");
+	}
+}
+class b2 extends top1
+{
+	void disp()
+	{
+		System.out.println("overridden in b2");
+	}
+}
+class b3 extends top1
+{
+	void disp()
+	{
+		System.out.println("overridden in b3");
+	}
+}
+
+
+public class demo {
+	
+	static void perform(top1 ref)
+	{
+		ref.disp();
+	}
+
+	public static void main(String[] args) {
+		
+		perform(new b1());
+		perform(new b2());
+		perform(new b3());
+		
+	}
+
+}
+
+5)
+
+
+//5) create abstract class Shape. declare "draw()" function as abstract. 
+//From this class define "Triangle","Polygon" and "Circle" .
+//create an array of Shape having 3 elements.
+//store child objects into this array . and call
+//their draw function.
+
+
+abstract class shape
+{
+	abstract void draw();
+}
+
+class traingle extends shape
+{
+	public void draw()
+	{
+		System.out.println("draw traingle");
+	}
+}
+
+class polygon extends shape
+{
+	public void draw()
+	{
+		System.out.println("draw ploygon");
+	}
+}
+class circle extends shape
+{
+	public void draw()
+	{
+		System.out.println("draw circle");
+	}
+}
+
+public class demo {
+	
+	public static void main(String[] args) {
+		
+		shape arr[]= new shape[3];
+		arr[0]=new traingle();
+		arr[1]=new polygon();
+		arr[2]=new circle();
+		
+		for(int i=0;i<=2;i++)
+		{
+			arr[i].draw();
+		}
+	}
+
+}
+
+
+
+6)
+//6) Define interface "A" with "disp1()" method.
+//Derive from "A", interface "B" with "disp2" method.
+//Derive class "C" , from "B".
+//Instantiate class "C" and call its members as well as derived from parent interfaces.
+
+interface a
+{
+	abstract void disp1();
+	
+}
+
+interface b extends a
+{
+	abstract void disp2();
+	
+}
+
+class c implements b
+{
+	public void disp1()
+	{
+		System.out.println("how are you?");
+	}
+	
+	public void disp2()
+	{
+		System.out.println("i m fine");
+	}
+	c()
+	{
+		System.out.println("hello");
+	}
+}
+
+
+public class demo {
+	
+	
+
+	public static void main(String[] args) {
+		
+		c c1 = new c();
+		c1.disp1();
+		c1.disp2();
+		
+	}
+
+}
+
+7)
+
+//7) Define class "Parent1" with some data.
+//Define interface "Parent2" with some methods.
+//Derive a class "Child" from "Parent1" and "Parent2", instantiate it and call the members.
+
+class parent1 
+   { 
+	 void disp()
+	 {
+		 System.out.println("hello im inside parent1 class");
+	 }
+    }
+
+interface parent2
+{
+	abstract void disp2();
+}
+
+
+class child extends parent1 implements parent2
+{
+	public void disp2()
+	{
+		System.out.println("inside child class");
+	}
+}
+
+
+public class demo {
+	
+	public static void main(String[] args) {
+		
+		child c1 = new child();
+		c1.disp();
+		c1.disp2();
+	}
+
+}
+
+8)
+
+//8) Define a class "base1" with only parameterized constructor.
+//Derive a class "sub1" from "base1". This class should have following constructors
+//	a) Default
+//	b) one parameter
+//	c) two parameter
+//Now try to instantiate "sub1" , using any of the above mentioned constructors.
+
+class base1
+{
+	int num;
+	base1(int a)
+	{
+		this.num=a;
+		System.out.println("Inside Base Constructor of Base1 "+num);
+	}
+}
+class sub1 extends base1
+{
+
+	sub1()
+	{
+		super(5);
+		System.out.println("hello from def const");
+	}
+	sub1(int a)
+	{
+		super(10);
+		
+	}
+	sub1(int a, int b)
+	{
+		super(5);
+	}
+	
+}
+
+
+
+
+public class demo {
+	
+	public static void main(String[] args) {
+		sub1 s1 = new sub1();
+		
+	}
+
+}
+
+9)
+
+
+//9) create interface "Game" , have an abstract method "play()". 
+//from this interface implements classes like "Cricket" , "FootBall" and "Tennis".
+//Now Define one more class 
+//public class Demo with main function.
+//In this class have a static method "perform" which will take interface reference as parameter.
+//inside "perform()" see to it that any child object passed ,its "play()" method should be invoked. 
+//Call "perform()" method from main function.
+
+
+
+interface game
+{
+	abstract void play();	
+}
+
+class cricket implements game
+{
+	public void play()
+	{
+		System.out.println("play cricket");
+	}
+}
+class football implements game
+{
+	public void play()
+	{
+		System.out.println("play football");
+	}	
+}
+class tennis implements game
+{
+	public void play()
+	{
+		System.out.println("play tennis");
+	}
+}
+public class demo {
+	
+	static void perform(game ref)
+	{
+		ref.play();
+	}
+	
+	public static void main(String[] args) {
+		
+		perform(new cricket());
+		perform(new football());
+		perform(new tennis());
+		
+	}
+
+}
+
+
+
+
+
