@@ -1,0 +1,77 @@
+class weapon{
+    void attack()
+    	{
+    		
+    	}
+    void holdfire()
+    {
+    	
+    }
+}
+
+class gun extends weapon
+{
+	void attack()
+	{
+		System.out.println("fire bullets ");
+	}
+	void holdfire()
+	{
+		System.out.println("hold fire");
+	}
+}
+
+class bomb extends weapon
+{
+	void attack()
+	{
+		System.out.println("throw grenade");
+		
+	}
+}
+class sniper extends weapon
+{
+	void attack()
+	{
+		System.out.println("locate another sniper");
+		
+	}
+	void reload()
+	{
+		System.out.println("fill sniper bullets");
+	}
+	
+}
+
+
+public class day5_1 {
+
+    
+
+	public static void main(String[] args) {
+      
+		weapon [] w= new weapon[3];
+		w[0]= new gun();
+		w[1]= new bomb();
+		w[2]= new sniper();
+		
+		for(int i=0;i<=2;i++)
+		{
+		     w[i].attack();	
+		     if(w[i] instanceof gun)
+		     {
+			gun s1 = (gun)w[i]; //downcasting
+			s1.holdfire();
+		     }
+		if(w[i] instanceof sniper)
+		{
+			sniper s1 = (sniper)w[i]; //downcasting
+			s1.reload();
+		}
+		
+		
+		
+		}
+		
+	}
+}
